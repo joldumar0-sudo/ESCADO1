@@ -29,8 +29,22 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Grupo Escoteiro" },
-      { name: "description", content: "Plataforma do grupo escoteiro: documentos, galeria, chat e assistente IA." },
+      { title: "ESCOTEIROS CATÓLICOS DO DONDO" },
+      { name: "description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste 
+Aqui você encontra tudo sobre o grupo 
+De Oldumar Júlio pra escoteiros" },
+      { property: "og:title", content: "ESCOTEIROS CATÓLICOS DO DONDO" },
+      { name: "twitter:title", content: "ESCOTEIROS CATÓLICOS DO DONDO" },
+      { property: "og:description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste 
+Aqui você encontra tudo sobre o grupo 
+De Oldumar Júlio pra escoteiros" },
+      { name: "twitter:description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste 
+Aqui você encontra tudo sobre o grupo 
+De Oldumar Júlio pra escoteiros" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/027eff00-fd4b-4aa5-83dc-048399048ea7" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/027eff00-fd4b-4aa5-83dc-048399048ea7" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
