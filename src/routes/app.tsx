@@ -10,14 +10,15 @@ export const Route = createFileRoute("/app")({
   component: AppShell,
 });
 
-const nav = [
+type NavItem = { to: "/app" | "/app/biblioteca" | "/app/galeria" | "/app/informacoes" | "/app/chat" | "/app/assistente"; label: string; icon: typeof LayoutDashboard; exact?: boolean };
+const nav: NavItem[] = [
   { to: "/app", label: "Início", icon: LayoutDashboard, exact: true },
   { to: "/app/biblioteca", label: "Biblioteca", icon: Library },
   { to: "/app/galeria", label: "Galeria", icon: Camera },
   { to: "/app/informacoes", label: "Informações", icon: BookOpen },
   { to: "/app/chat", label: "Chat", icon: MessagesSquare },
   { to: "/app/assistente", label: "Assistente", icon: Sparkles },
-] as const;
+];
 
 function AppShell() {
   const { user, loading, isStaff } = useAuth();
