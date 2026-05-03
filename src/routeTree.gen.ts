@@ -13,6 +13,13 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as AppInformacoesRouteImport } from './routes/app.informacoes'
+import { Route as AppGaleriaRouteImport } from './routes/app.galeria'
+import { Route as AppChatRouteImport } from './routes/app.chat'
+import { Route as AppBibliotecaRouteImport } from './routes/app.biblioteca'
+import { Route as AppAssistenteRouteImport } from './routes/app.assistente'
+import { Route as AppAdminRouteImport } from './routes/app.admin'
+import { Route as ApiAiChatRouteImport } from './routes/api/ai.chat'
 
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
@@ -34,37 +41,127 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRoute,
 } as any)
+const AppInformacoesRoute = AppInformacoesRouteImport.update({
+  id: '/informacoes',
+  path: '/informacoes',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGaleriaRoute = AppGaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppChatRoute = AppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBibliotecaRoute = AppBibliotecaRouteImport.update({
+  id: '/biblioteca',
+  path: '/biblioteca',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssistenteRoute = AppAssistenteRouteImport.update({
+  id: '/assistente',
+  path: '/assistente',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAdminRoute = AppAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AppRoute,
+} as any)
+const ApiAiChatRoute = ApiAiChatRouteImport.update({
+  id: '/api/ai/chat',
+  path: '/api/ai/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/assistente': typeof AppAssistenteRoute
+  '/app/biblioteca': typeof AppBibliotecaRoute
+  '/app/chat': typeof AppChatRoute
+  '/app/galeria': typeof AppGaleriaRoute
+  '/app/informacoes': typeof AppInformacoesRoute
   '/app/': typeof AppIndexRoute
+  '/api/ai/chat': typeof ApiAiChatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/assistente': typeof AppAssistenteRoute
+  '/app/biblioteca': typeof AppBibliotecaRoute
+  '/app/chat': typeof AppChatRoute
+  '/app/galeria': typeof AppGaleriaRoute
+  '/app/informacoes': typeof AppInformacoesRoute
   '/app': typeof AppIndexRoute
+  '/api/ai/chat': typeof ApiAiChatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/auth': typeof AuthRoute
+  '/app/admin': typeof AppAdminRoute
+  '/app/assistente': typeof AppAssistenteRoute
+  '/app/biblioteca': typeof AppBibliotecaRoute
+  '/app/chat': typeof AppChatRoute
+  '/app/galeria': typeof AppGaleriaRoute
+  '/app/informacoes': typeof AppInformacoesRoute
   '/app/': typeof AppIndexRoute
+  '/api/ai/chat': typeof ApiAiChatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/auth' | '/app/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/auth'
+    | '/app/admin'
+    | '/app/assistente'
+    | '/app/biblioteca'
+    | '/app/chat'
+    | '/app/galeria'
+    | '/app/informacoes'
+    | '/app/'
+    | '/api/ai/chat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/app'
-  id: '__root__' | '/' | '/app' | '/auth' | '/app/'
+  to:
+    | '/'
+    | '/auth'
+    | '/app/admin'
+    | '/app/assistente'
+    | '/app/biblioteca'
+    | '/app/chat'
+    | '/app/galeria'
+    | '/app/informacoes'
+    | '/app'
+    | '/api/ai/chat'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/auth'
+    | '/app/admin'
+    | '/app/assistente'
+    | '/app/biblioteca'
+    | '/app/chat'
+    | '/app/galeria'
+    | '/app/informacoes'
+    | '/app/'
+    | '/api/ai/chat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ApiAiChatRoute: typeof ApiAiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -97,14 +194,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/informacoes': {
+      id: '/app/informacoes'
+      path: '/informacoes'
+      fullPath: '/app/informacoes'
+      preLoaderRoute: typeof AppInformacoesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/galeria': {
+      id: '/app/galeria'
+      path: '/galeria'
+      fullPath: '/app/galeria'
+      preLoaderRoute: typeof AppGaleriaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/chat': {
+      id: '/app/chat'
+      path: '/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AppChatRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/biblioteca': {
+      id: '/app/biblioteca'
+      path: '/biblioteca'
+      fullPath: '/app/biblioteca'
+      preLoaderRoute: typeof AppBibliotecaRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assistente': {
+      id: '/app/assistente'
+      path: '/assistente'
+      fullPath: '/app/assistente'
+      preLoaderRoute: typeof AppAssistenteRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/admin': {
+      id: '/app/admin'
+      path: '/admin'
+      fullPath: '/app/admin'
+      preLoaderRoute: typeof AppAdminRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/api/ai/chat': {
+      id: '/api/ai/chat'
+      path: '/api/ai/chat'
+      fullPath: '/api/ai/chat'
+      preLoaderRoute: typeof ApiAiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAdminRoute: typeof AppAdminRoute
+  AppAssistenteRoute: typeof AppAssistenteRoute
+  AppBibliotecaRoute: typeof AppBibliotecaRoute
+  AppChatRoute: typeof AppChatRoute
+  AppGaleriaRoute: typeof AppGaleriaRoute
+  AppInformacoesRoute: typeof AppInformacoesRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAdminRoute: AppAdminRoute,
+  AppAssistenteRoute: AppAssistenteRoute,
+  AppBibliotecaRoute: AppBibliotecaRoute,
+  AppChatRoute: AppChatRoute,
+  AppGaleriaRoute: AppGaleriaRoute,
+  AppInformacoesRoute: AppInformacoesRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
@@ -114,7 +272,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
   AuthRoute: AuthRoute,
+  ApiAiChatRoute: ApiAiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
