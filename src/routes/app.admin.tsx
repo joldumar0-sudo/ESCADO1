@@ -55,7 +55,7 @@ function Admin() {
   const load = async () => {
     setBusy(true);
     const [{ data: profiles, error: pErr }, { data: roles, error: rErr }] = await Promise.all([
-      supabase.from("profiles").select("id,full_name,email,avatar_url,section").order("full_name", { ascending: true }),
+      supabase.rpc("get_members_with_email"),
       supabase.from("user_roles").select("user_id,role"),
     ]);
     if (pErr || rErr) {

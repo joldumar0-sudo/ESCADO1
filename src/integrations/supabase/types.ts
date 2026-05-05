@@ -279,6 +279,17 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_members_with_email: {
+        Args: never
+        Returns: {
+          avatar_url: string
+          email: string
+          full_name: string
+          id: string
+          section: Database["public"]["Enums"]["scout_section"]
+        }[]
+      }
+      get_my_email: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
