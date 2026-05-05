@@ -43,7 +43,7 @@ function GeneralChat() {
     supabase.from("chat_messages").select("*").order("created_at").limit(200).then(({ data }) => {
       setMessages((data ?? []) as Msg[]);
     });
-    supabase.from("profiles").select("id,full_name,email").then(({ data }) => {
+    supabase.from("profiles").select("id,full_name").then(({ data }) => {
       const map: Record<string, Profile> = {};
       (data ?? []).forEach((p) => (map[p.id] = p as Profile));
       setProfiles(map);
@@ -102,7 +102,7 @@ function DirectMessages() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    supabase.from("profiles").select("id,full_name,email").then(({ data }) => {
+    supabase.from("profiles").select("id,full_name").then(({ data }) => {
       setMembers(((data ?? []) as Profile[]).filter((p) => p.id !== user?.id));
     });
   }, [user]);
