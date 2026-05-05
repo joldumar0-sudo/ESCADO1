@@ -2,7 +2,7 @@ import { createFileRoute, Outlet, Link, useNavigate, useLocation } from "@tansta
 import { useEffect } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
-import { Tent, LayoutDashboard, Library, Camera, BookOpen, MessagesSquare, Sparkles, Shield, LogOut, Loader2 } from "lucide-react";
+import { Tent, LayoutDashboard, Library, Camera, BookOpen, MessagesSquare, Sparkles, Shield, LogOut, Loader2, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/app")({
   component: AppShell,
 });
 
-type NavItem = { to: "/app" | "/app/biblioteca" | "/app/galeria" | "/app/informacoes" | "/app/chat" | "/app/assistente"; label: string; icon: typeof LayoutDashboard; exact?: boolean };
+type NavItem = { to: "/app" | "/app/biblioteca" | "/app/galeria" | "/app/informacoes" | "/app/chat" | "/app/assistente" | "/app/definicoes"; label: string; icon: typeof LayoutDashboard; exact?: boolean };
 const nav: NavItem[] = [
   { to: "/app", label: "Início", icon: LayoutDashboard, exact: true },
   { to: "/app/biblioteca", label: "Biblioteca", icon: Library },
@@ -18,6 +18,7 @@ const nav: NavItem[] = [
   { to: "/app/informacoes", label: "Informações", icon: BookOpen },
   { to: "/app/chat", label: "Chat", icon: MessagesSquare },
   { to: "/app/assistente", label: "Assistente", icon: Sparkles },
+  { to: "/app/definicoes", label: "Definições", icon: Settings },
 ];
 
 function AppShell() {
