@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
 import { Route as AppInformacoesRouteImport } from './routes/app.informacoes'
 import { Route as AppGaleriaRouteImport } from './routes/app.galeria'
+import { Route as AppDefinicoesRouteImport } from './routes/app.definicoes'
 import { Route as AppChatRouteImport } from './routes/app.chat'
 import { Route as AppBibliotecaRouteImport } from './routes/app.biblioteca'
 import { Route as AppAssistenteRouteImport } from './routes/app.assistente'
@@ -51,6 +52,11 @@ const AppGaleriaRoute = AppGaleriaRouteImport.update({
   path: '/galeria',
   getParentRoute: () => AppRoute,
 } as any)
+const AppDefinicoesRoute = AppDefinicoesRouteImport.update({
+  id: '/definicoes',
+  path: '/definicoes',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppChatRoute = AppChatRouteImport.update({
   id: '/chat',
   path: '/chat',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/app/assistente': typeof AppAssistenteRoute
   '/app/biblioteca': typeof AppBibliotecaRoute
   '/app/chat': typeof AppChatRoute
+  '/app/definicoes': typeof AppDefinicoesRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/informacoes': typeof AppInformacoesRoute
   '/app/': typeof AppIndexRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/app/assistente': typeof AppAssistenteRoute
   '/app/biblioteca': typeof AppBibliotecaRoute
   '/app/chat': typeof AppChatRoute
+  '/app/definicoes': typeof AppDefinicoesRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/informacoes': typeof AppInformacoesRoute
   '/app': typeof AppIndexRoute
@@ -111,6 +119,7 @@ export interface FileRoutesById {
   '/app/assistente': typeof AppAssistenteRoute
   '/app/biblioteca': typeof AppBibliotecaRoute
   '/app/chat': typeof AppChatRoute
+  '/app/definicoes': typeof AppDefinicoesRoute
   '/app/galeria': typeof AppGaleriaRoute
   '/app/informacoes': typeof AppInformacoesRoute
   '/app/': typeof AppIndexRoute
@@ -126,6 +135,7 @@ export interface FileRouteTypes {
     | '/app/assistente'
     | '/app/biblioteca'
     | '/app/chat'
+    | '/app/definicoes'
     | '/app/galeria'
     | '/app/informacoes'
     | '/app/'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/app/assistente'
     | '/app/biblioteca'
     | '/app/chat'
+    | '/app/definicoes'
     | '/app/galeria'
     | '/app/informacoes'
     | '/app'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/app/assistente'
     | '/app/biblioteca'
     | '/app/chat'
+    | '/app/definicoes'
     | '/app/galeria'
     | '/app/informacoes'
     | '/app/'
@@ -208,6 +220,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppGaleriaRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/definicoes': {
+      id: '/app/definicoes'
+      path: '/definicoes'
+      fullPath: '/app/definicoes'
+      preLoaderRoute: typeof AppDefinicoesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/chat': {
       id: '/app/chat'
       path: '/chat'
@@ -251,6 +270,7 @@ interface AppRouteChildren {
   AppAssistenteRoute: typeof AppAssistenteRoute
   AppBibliotecaRoute: typeof AppBibliotecaRoute
   AppChatRoute: typeof AppChatRoute
+  AppDefinicoesRoute: typeof AppDefinicoesRoute
   AppGaleriaRoute: typeof AppGaleriaRoute
   AppInformacoesRoute: typeof AppInformacoesRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -261,6 +281,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssistenteRoute: AppAssistenteRoute,
   AppBibliotecaRoute: AppBibliotecaRoute,
   AppChatRoute: AppChatRoute,
+  AppDefinicoesRoute: AppDefinicoesRoute,
   AppGaleriaRoute: AppGaleriaRoute,
   AppInformacoesRoute: AppInformacoesRoute,
   AppIndexRoute: AppIndexRoute,
