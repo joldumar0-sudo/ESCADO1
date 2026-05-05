@@ -228,6 +228,7 @@ export type Database = {
           email: string | null
           full_name: string | null
           id: string
+          patrol: string | null
           section: Database["public"]["Enums"]["scout_section"]
           updated_at: string
         }
@@ -238,6 +239,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id: string
+          patrol?: string | null
           section?: Database["public"]["Enums"]["scout_section"]
           updated_at?: string
         }
@@ -248,6 +250,7 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: string
+          patrol?: string | null
           section?: Database["public"]["Enums"]["scout_section"]
           updated_at?: string
         }
