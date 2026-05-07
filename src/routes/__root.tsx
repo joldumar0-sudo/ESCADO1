@@ -30,17 +30,11 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "ESCOTEIROS CATÓLICOS DE MOCAMBIQUE" },
-      { name: "description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste. Aqui você encontra tudo sobre o grupo 
-FUNDO BASEADO NO ESCUTISMO CATOLICO 
-MOCAMBICANO" },
+      { name: "description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste. Aqui você encontra tudo sobre o grupo FUNDO BASEADO NO ESCUTISMO CATOLICO MOCAMBICANO" },
       { property: "og:title", content: "ESCOTEIROS CATÓLICOS DE MOCAMBIQUE" },
       { name: "twitter:title", content: "ESCOTEIROS CATÓLICOS DE MOCAMBIQUE" },
-      { property: "og:description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste. Aqui você encontra tudo sobre o grupo 
-FUNDO BASEADO NO ESCUTISMO CATOLICO 
-MOCAMBICANO" },
-      { name: "twitter:description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste. Aqui você encontra tudo sobre o grupo 
-FUNDO BASEADO NO ESCUTISMO CATOLICO 
-MOCAMBICANO" },
+      { property: "og:description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste. Aqui você encontra tudo sobre o grupo FUNDO BASEADO NO ESCUTISMO CATOLICO MOCAMBICANO" },
+      { name: "twitter:description", content: "Procurai deixar o mundo um pouco melhor do que o encontraste. Aqui você encontra tudo sobre o grupo FUNDO BASEADO NO ESCUTISMO CATOLICO MOCAMBICANO" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/fbe99147-e4a2-4434-bafa-b4b6497b12a2" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/fbe99147-e4a2-4434-bafa-b4b6497b12a2" },
       { name: "twitter:card", content: "summary_large_image" },
