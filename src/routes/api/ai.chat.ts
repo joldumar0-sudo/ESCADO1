@@ -33,7 +33,13 @@ export const Route = createFileRoute('/api/ai/chat')({
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) return new Response(JSON.stringify({ error: 'AI gateway não configurado' }), { status: 500 });
 
-        const body = (await request.json()) as { messages: { role: 'user' | 'assistant' | 'system'; content: string }[] };
+        let parsed;
+        try {
+          parsed = ChatSchema.parse(await request.json());
+        } catch {
+          return new Response(JSON.stringify({ error: 'Pedido inválido' }), { status: 400 });
+        }
+        const body = parsed;
 
         // Build context from group content (simple RAG: include titles + snippets)
         const [{ data: docs }, { data: pages }] = await Promise.all([
