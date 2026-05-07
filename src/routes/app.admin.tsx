@@ -160,6 +160,18 @@ function Admin() {
         <StatCard icon={Users} label="Jovens" value={stats.jovens} />
       </div>
 
+      <Card className="border-primary/30 bg-primary/5 p-4 text-sm">
+        <div className="mb-2 flex items-center gap-2 font-semibold">
+          <Shield className="h-4 w-4 text-primary" /> Quem pode publicar conteúdo?
+        </div>
+        <ul className="space-y-1 text-muted-foreground">
+          <li className="flex flex-wrap items-center gap-2"><Badge className={roleStyle.admin}>admin</Badge> Acesso total — gere membros, papéis e publica em todas as áreas.</li>
+          <li className="flex flex-wrap items-center gap-2"><Badge className={roleStyle.dirigente}>dirigente</Badge> Pode adicionar conteúdo na Biblioteca, Informações e Galeria.</li>
+          <li className="flex flex-wrap items-center gap-2"><Badge className={roleStyle.jovem}>jovem</Badge><Badge className={roleStyle.membro}>membro</Badge> Apenas leitura e chat.</li>
+        </ul>
+        <p className="mt-2 text-xs text-muted-foreground">Para autorizar alguém a publicar, atribua-lhe o papel <strong>dirigente</strong> (ou admin) na lista abaixo.</p>
+      </Card>
+
       <Card className="p-3">
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative flex-1 min-w-[200px]">
