@@ -1,7 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { z } from 'zod';
 import { supabaseAdmin } from '@/integrations/supabase/client.server';
 
 const MODEL = 'google/gemini-2.5-flash';
+
+const ChatSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(['user', 'assistant']),
+        content: z.string().min(1).max(4000),
+      })
+    )
+    .min(1)
+    .max(50),
+});
 
 export const Route = createFileRoute('/api/ai/chat')({
   server: {
@@ -20,7 +33,13 @@ export const Route = createFileRoute('/api/ai/chat')({
         const apiKey = process.env.LOVABLE_API_KEY;
         if (!apiKey) return new Response(JSON.stringify({ error: 'AI gateway não configurado' }), { status: 500 });
 
-        const body = (await request.json()) as { messages: { role: 'user' | 'assistant' | 'system'; content: string }[] };
+        let parsed;
+        try {
+          parsed = ChatSchema.parse(await request.json());
+        } catch {
+          return new Response(JSON.stringify({ error: 'Pedido inválido' }), { status: 400 });
+        }
+        const body = parsed;
 
         // Build context from group content (simple RAG: include titles + snippets)
         const [{ data: docs }, { data: pages }] = await Promise.all([
@@ -52,7 +71,8 @@ export const Route = createFileRoute('/api/ai/chat')({
           const text = await upstream.text();
           if (upstream.status === 429) return new Response(JSON.stringify({ error: 'Muitos pedidos. Tente em instantes.' }), { status: 429 });
           if (upstream.status === 402) return new Response(JSON.stringify({ error: 'Créditos de IA esgotados.' }), { status: 402 });
-          return new Response(JSON.stringify({ error: 'Falha no AI gateway', detail: text }), { status: 500 });
+          console.error('AI upstream error:', upstream.status, text);
+          return new Response(JSON.stringify({ error: 'Falha no serviço de IA. Tente novamente.' }), { status: 500 });
         }
 
         const data = await upstream.json();
