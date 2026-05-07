@@ -1,7 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { z } from 'zod';
 import { supabaseAdmin } from '@/integrations/supabase/client.server';
 
 const MODEL = 'google/gemini-2.5-flash';
+
+const ChatSchema = z.object({
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(['user', 'assistant']),
+        content: z.string().min(1).max(4000),
+      })
+    )
+    .min(1)
+    .max(50),
+});
 
 export const Route = createFileRoute('/api/ai/chat')({
   server: {
