@@ -71,7 +71,8 @@ export const Route = createFileRoute('/api/ai/chat')({
           const text = await upstream.text();
           if (upstream.status === 429) return new Response(JSON.stringify({ error: 'Muitos pedidos. Tente em instantes.' }), { status: 429 });
           if (upstream.status === 402) return new Response(JSON.stringify({ error: 'Créditos de IA esgotados.' }), { status: 402 });
-          return new Response(JSON.stringify({ error: 'Falha no AI gateway', detail: text }), { status: 500 });
+          console.error('AI upstream error:', upstream.status, text);
+          return new Response(JSON.stringify({ error: 'Falha no serviço de IA. Tente novamente.' }), { status: 500 });
         }
 
         const data = await upstream.json();
