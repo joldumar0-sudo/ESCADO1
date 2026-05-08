@@ -14,6 +14,86 @@ export type Database = {
   }
   public: {
     Tables: {
+      activities: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string | null
+          ends_at: string | null
+          id: string
+          location: string | null
+          sections: Database["public"]["Enums"]["scout_section"][]
+          starts_at: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          description?: string | null
+          ends_at?: string | null
+          id?: string
+          location?: string | null
+          sections?: Database["public"]["Enums"]["scout_section"][]
+          starts_at: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          ends_at?: string | null
+          id?: string
+          location?: string | null
+          sections?: Database["public"]["Enums"]["scout_section"][]
+          starts_at?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      activity_attendance: {
+        Row: {
+          activity_id: string
+          created_at: string
+          id: string
+          marked_by: string
+          notes: string | null
+          status: Database["public"]["Enums"]["attendance_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          activity_id: string
+          created_at?: string
+          id?: string
+          marked_by: string
+          notes?: string | null
+          status?: Database["public"]["Enums"]["attendance_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          activity_id?: string
+          created_at?: string
+          id?: string
+          marked_by?: string
+          notes?: string | null
+          status?: Database["public"]["Enums"]["attendance_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "activity_attendance_activity_id_fkey"
+            columns: ["activity_id"]
+            isOneToOne: false
+            referencedRelation: "activities"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ai_conversations: {
         Row: {
           created_at: string
@@ -305,6 +385,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "dirigente" | "jovem" | "membro"
+      attendance_status: "presente" | "ausente" | "justificado"
       scout_section:
         | "lobinho"
         | "escoteiro"
@@ -440,6 +521,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "dirigente", "jovem", "membro"],
+      attendance_status: ["presente", "ausente", "justificado"],
       scout_section: [
         "lobinho",
         "escoteiro",
